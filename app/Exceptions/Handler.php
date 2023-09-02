@@ -50,12 +50,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof UnauthorizedException) {
-            return response()->json([
-                "error" => true,
-                "message" => "unauthorized"
-            ], 401);
-        }
         return response()->json([
             "error" => true,
             "message" => $exception->getMessage()
