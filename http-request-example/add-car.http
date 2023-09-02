@@ -1,0 +1,11 @@
+POST /cars/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{
+    "brand":"car-name",
+    "model":"car-brand",
+    "police_number":"police-number",
+    "rent_perday":<price>
+}

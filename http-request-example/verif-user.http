@@ -1,0 +1,10 @@
+PUT /auth/verification HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{
+    "phone_number":"your_phone_number",
+    "address":"your_address",
+    "driving_license_id":"1234567890123456"
+}
