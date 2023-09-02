@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\DataIsExistsException;
 use App\Repositories\interfaces\IUserRepository;
+use App\Validators\UserInfoValidator;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -35,5 +36,11 @@ class UserService
             "name" => $created->name,
             "email"=>$created->email
         ];
+    }
+    public function verification(Request $request){
+        UserInfoValidator::validate($request);
+        $user_id = auth()->user()->id;
+        $this->userRepository->verification($user_id,$request->only(["phone_number","address","driving_license_id"]));
+        return auth()->user();
     }
 }

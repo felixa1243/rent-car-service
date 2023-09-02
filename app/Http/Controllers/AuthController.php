@@ -39,6 +39,13 @@ class AuthController extends Controller
         auth()->logout();
         return response()->json(["message"=>"logout success!"]);
     }
+    public function verification(Request $request){
+        $data = $this->userService->verification($request);
+        return response()->json([
+            "message"=>"verification success",
+            "data"=>$data
+        ]);
+    }
     public function refresh(){
         return response()->json([
             "user" => auth()->user(),

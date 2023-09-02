@@ -37,8 +37,15 @@ class UserRepository implements IUserRepository
     {
         // TODO: Implement update() method.
     }
-    public function findByEmail(string $email){
-        return User::where("email",$email)->first();
+
+    public function findByEmail(string $email)
+    {
+        return User::where("email", $email)->first();
+    }
+
+    public function verification(string $id, array $data)
+    {
+        return User::where("id", $id)->update($data);
     }
 
 }
