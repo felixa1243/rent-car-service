@@ -47,5 +47,4 @@ class UserRepository implements IUserRepository
     {
         return User::where("id", $id)->update($data);
     }
-
 }
