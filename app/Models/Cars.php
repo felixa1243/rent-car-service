@@ -1,9 +1,11 @@
 <?php
 namespace App\Models;
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Cars extends Model
 {
+    use Uuids;
     protected $primaryKey = 'id';
     public $incrementing = false;
 
@@ -14,6 +16,7 @@ class Cars extends Model
         'police_number',
         'rent_perday',
         'owner_id',
+        'availability'
     ];
 
     public function owner()

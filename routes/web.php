@@ -19,7 +19,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(["prefix"=>"auth"], function () use ($router) {
+$router->group(["prefix" => "auth"], function () use ($router) {
     $router->post("login", "AuthController@login");
     $router->post("register", "AuthController@register");
     $router->put("verification", "AuthController@verification");
@@ -27,8 +27,9 @@ $router->group(["prefix"=>"auth"], function () use ($router) {
     $router->post("refresh", "AuthController@refresh");
     $router->get("user-profile", "AuthController@whoami");
 });
-$router->group(["middleware"=>"auth","prefix"=>"cars"],function ()use($router){
-    $router->get("/",function (){
-       return response()->json("oke");
+$router->group(["prefix" => "cars"], function () use ($router) {
+    $router->get("search","CarsController@search");
+    $router->group(["middleware"=>"auth"],function () use($router){
+        $router->post("/", "CarsController@create");
     });
 });

@@ -30,6 +30,7 @@ return new class extends Migration {
             $table->string("model");
             $table->string("police_number");
             $table->integer("rent_perday");
+            $table->boolean("availability")->default(true);
             $table->uuid("owner_id");
             $table->timestamps();
             $table->foreign("owner_id")->references("id")->on("users");

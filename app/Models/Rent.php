@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Models;
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Rent extends Model
 {
+    use Uuids;
     protected $primaryKey = 'id';
     public $incrementing = false;
-
     protected $fillable = [
         'id',
         'renter_id',
