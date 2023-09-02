@@ -8,6 +8,7 @@ use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
+use App\Exceptions\UnauthorizedException;
 
 class Handler extends ExceptionHandler
 {
@@ -49,6 +50,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        if ($exception instanceof UnauthorizedException) {
+            return response()->json([
+                "error" => true,
+                "message" => "unauthorized"
+            ], 401);
+        }
+        return response()->json([
+            "error" => true,
+            "message" => $exception->getMessage()
+        ], 500);
     }
 }
