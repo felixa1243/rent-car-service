@@ -36,20 +36,4 @@ class CarsRepository implements ICarsRepository
     {
         // TODO: Implement update() method.
     }
-
-    public function findByBrand(string $brand)
-    {
-        return Cars::where("brand",$brand);
-    }
-
-    public function findByModel(string $model)
-    {
-        return Cars::where("model",$model);
-    }
-
-    public function findByAvailability(bool $isAvailable)
-    {
-        return Cars::where("availability",$isAvailable);
-    }
-
 }
